@@ -20,7 +20,7 @@ class WeatherResponseFormat(BaseModel):
         description="The current temperature in Fahrenheit or Celsius for the given location."
     )
     response: str = Field(
-        description="A natural language response to the user's weather question. Be kind and considerate about the day the user may have due to the weather."
+        description="A natural language response to the user's weather question. Be kind and considerate about the day the user may have due to the weather. Only answer questions about weather."
     )
 
 #Global System Tools
@@ -55,7 +55,7 @@ tools = [
 ]
 
 def setup_prompt(user_input):
-    system_prompt = "You are a weather assistant. If no day is specified, assume today. Please provide any available weather alerts to the user. If a region is not specific enough, assume for the user, and give a latitude and longitude"
+    system_prompt = "You are a weather assistant. If no day is specified, assume today. Please provide any available weather alerts to the user. If a region is not specific enough, assume for the user, and give a latitude and longitude. Only answer questions about weather"
     messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_input}
