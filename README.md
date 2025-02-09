@@ -1,5 +1,12 @@
-A demo ai agent that fetches weather information from WeatherAPI; can display it in any format/style you request or simply give you the information. Currently requires a payed or trial version of the API (as the llm can request forcast of future days). To remove this, just modify the tool under {#Global system tools} comment and the get_weather function.
+A demo ai agent (workflow) that fetches weather information from WeatherAPI; can display it in any format/style you request or simply give you the information.
+Currently requires a payed or trial version of the API (as the llm can request forcast of future days). To remove this, just modify the tool under {#Global system tools} comment and the get_weather function.
+This workflow only supports the gpt-4o or gpt-4o-mini models
 
-Environment values required are specified in .env-template
+Environment values required are specified as:
+
+    OPENAI_API_KEY = (your openai api key)
+    WEATHERAPI_API_KEY = (your weatherapi api key)
+    MAX_USES = (max uses before blocking normal access to input) #page is probably vulnerable to replay attacks or manually forming a POST
+    AI_MODEL = (openai model; either gpt-4o or gpt-4o-mini)
 
 You can build the image locally or pull from yellowjam/ai-weather-agent on docker hub
